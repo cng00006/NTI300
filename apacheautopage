@@ -1,0 +1,5 @@
+yum -y install mod_ssl
+systemctl start httpd
+sed -i 's/^/#/g' /etc/httpd/config.d/welcome.conf
+echo "<html><body><h1> Hi there NT1300 <h/1><body><html>
+systemctl restart httpd
