@@ -1,3 +1,6 @@
+#! /bin/bash
+if [ -e /etc/httpd/conf/httpd. conf ]; then
+  exit 0
 yum -y install mod_ssl
 systemctl start httpd
 sed -i 's/^/#/g' /etc/httpd/conf.d/welcome.conf
