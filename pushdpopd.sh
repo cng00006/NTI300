@@ -1,3 +1,5 @@
+#! bin/bash
+
 pushd ( )
 {
 dirname=$1
@@ -11,3 +13,5 @@ DIR_STACK=${DIR_STACK#* }
 cd ${DIR_STACK%% *}
 echo "$PWD"
 }
+
+#In the code givin it would throw an error if unexpected information was entered.
