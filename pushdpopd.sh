@@ -15,3 +15,5 @@ echo "$PWD"
 }
 
 #In the code givin it would throw an error if unexpected information was entered.
+#If you tried to use popd with nothing in it, it would give an error it was empty.
+#You could make the script interactive by adding in a loop for user input so it would not quit when given no argument.
