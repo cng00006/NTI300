@@ -50,7 +50,7 @@ def django_install():
               '&& django-admin startproject project1')
 
 def django_start():
-    print("starting django')
+    print('starting django')
     os.system('chown -R cng00006 /opt/django')
     os.chdir('/optdjango/project1')
     os.system('source /opt/django/django-env/bin/activate ' + \
