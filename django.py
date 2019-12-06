@@ -36,7 +36,7 @@ def setup_install():
     os.chdir('/opt')
     os.mkdir('/opt/django')
     os.system('virtualenv django-env')
-    os.system('cown -R chrisng /opt/django')
+    os.system('cown -R cng00006 /opt/django')
     # Using shell because python chown does not work as well
 
 def django_install():
@@ -51,7 +51,7 @@ def django_install():
 
 def django_start():
     print("starting django')
-    os.system('chown -R chrisng /opt/django')
+    os.system('chown -R cng00006 /opt/django')
     os.chdir('/optdjango/project1')
     os.system('source /opt/django/django-env/bin/activate ' + \
               '&& python manage.py migrate')
@@ -71,7 +71,7 @@ def django_start():
     with open('project1/settings.py', "w") as f:
       f.write(newText)
 
-    os.system('sudo -u chrisng sh -c "source /opt/django/django-env/bin/activate && python manage.py runserver 0.0.0.0:8000&"')
+    os.system('sudo -u cng00006 sh -c "source /opt/django/django-env/bin/activate && python manage.py runserver 0.0.0.0:8000&"')
 
 local_repo()          
 setup_install()
