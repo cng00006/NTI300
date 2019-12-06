@@ -14,7 +14,7 @@ zone = 'us-central1-a'
 name = 'test3'
 
 def list_instances(compute, project, zone):
-    result = compute.list_instances().list(project=project, zone=zone,).execute()
+    result = compute.instances().list(project=project, zone=zone,).execute()
     return result['items']
 
 def create_instance(compute, project, zone, name):
@@ -33,14 +33,14 @@ def create_instance(compute, project, zone, name):
             {
                 'boot': True,
                 'autoDelete': True,
-                'initalizeParms': {
+                'initalizeParams': {
                     'sourceImage': source_disk_image,
                 }
             }
         ],
 
         'networkInterfaces': [{
-            'network': 'global/network/default',
+            'network': 'global/networks/default',
             'accessConfigs': [
                 {'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}
             ]
