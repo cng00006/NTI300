@@ -27,7 +27,7 @@ def create_instance(compute, project, zone, name):
 
     config = {
         'name': name,
-        'macineType': machine_type,
+        'machineType': machine_type,
 
         'disks': [
             {
