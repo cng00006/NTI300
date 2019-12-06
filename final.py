@@ -1,7 +1,7 @@
 #1/usr/bin/python
 
 
-from oauth2client. import GoogleCredentials
+from oauth2client.client import GoogleCredentials
 from googleapiclient import discovery
 import pprint
 import json
