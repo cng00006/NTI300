@@ -33,7 +33,7 @@ def create_instance(compute, project, zone, name):
             {
                 'boot': True,
                 'autoDelete': True,
-                'initalizeParams': {
+                'initializeParams': {
                     'sourceImage': source_disk_image,
                 }
             }
