@@ -61,8 +61,8 @@ def create_instance(compute, project, zone, name):
 
         "tags": {
         "items": [
-        "http-server": "",
-        "https-server": ""
+        "http-server",
+        "https-server"
         ]
         },
 
