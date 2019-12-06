@@ -1,3 +1,4 @@
+#!/bin/python
 
 def local_repo():
     repo="""[local-epel]
