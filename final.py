@@ -10,7 +10,7 @@ credentials = GoogleCredentials.get_application_default()
 compute = discovery.build('compute', 'v1', credentials=credentials)
 
 project = 'my-first-project-254202'
-zone = 'us-central-a'
+zone = 'us-central1-a'
 name = 'test3'
 
 def list_instances(compute, project, zone):
