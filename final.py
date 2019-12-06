@@ -9,7 +9,7 @@ import json
 credentials = GoogleCredentials.get_application_default()
 compute = discovery.build('compute', 'v1', credentials=credentials)
 
-project = 'nti-300-2019'
+project = 'my-first-project-254202'
 zone = 'us-central-a'
 name = 'test3'
 
@@ -51,7 +51,7 @@ def create_instance(compute, project, zone, name):
                 'https://www.googleapis.com/auth/devstorage.read_write',
                 'https://www.googleapis.com/auth/logging.write'
             ]
-       }],
+        }],
         "labels": {
         "http-server": "",
         "https-server": ""
@@ -63,7 +63,7 @@ def create_instance(compute, project, zone, name):
         "https-server"
         ]
         },
-        
+
         'metadata': {
             'items': [{
             'key': 'startup_script',
