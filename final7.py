@@ -68,8 +68,8 @@ def create_instance(compute, project, zone, name):
 
         'metadata': {
             'items': [{
-            'key': 'startup_script',
-            'value': startup_script
+                'key': 'startup_script',
+                'value': startup_script
             }]
         }
     }
