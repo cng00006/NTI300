@@ -45,6 +45,7 @@ def create_instance(compute, project, zone, name):
                 {'type': 'ONE_TO_ONE_NAT', 'name': 'External NAT'}
             ]
         }],
+        
         'serviceAccounts': [{
             'email': 'default',
             'scopes': [
@@ -52,6 +53,7 @@ def create_instance(compute, project, zone, name):
                 'https://www.googleapis.com/auth/logging.write'
             ]
         }],
+        
         "labels": {
         "http-server": "",
         "https-server": ""
@@ -59,8 +61,8 @@ def create_instance(compute, project, zone, name):
 
         "tags": {
         "items": [
-        "http-server",
-        "https-server"
+        "http-server": "",
+        "https-server": ""
         ]
         },
 
