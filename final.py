@@ -51,12 +51,19 @@ def create_instance(compute, project, zone, name):
                 'https://www.googleapis.com/auth/devstorage.read_write',
                 'https://www.googleapis.com/auth/logging.write'
             ]
-        }],
+       }],
         "labels": {
         "http-server": "",
-        "https-server"
-        
+        "https-server": ""
         },
+
+        "tags": {
+        "items": [
+        "http-server",
+        "https-server"
+        ]
+        },
+        
         'metadata': {
             'items': [{
             'key': 'startup_script',
