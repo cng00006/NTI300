@@ -23,7 +23,7 @@ def create_instance(compute, project, zone, name):
       project='centos-cloud', family='centos-7').execute()
 
     source_disk_image = image_response['selfLink']
-    machine_type = "zones/%s/machineTypes/f1-micro" % zones
+    machine_type = "zones/%s/machineTypes/f1-micro" % zone
 
     config = {
         'name': name,
