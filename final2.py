@@ -1,4 +1,4 @@
-#1/usr/bin/python
+#!/usr/bin/python
 
 
 from oauth2client.client import GoogleCredentials
