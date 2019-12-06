@@ -55,7 +55,7 @@ def create_instance(compute, project, zone, name):
         "labels": {
         "http-server": "",
         "https-server"
-        ]
+        
         },
         'metadata': {
             'items': [{
