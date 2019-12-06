@@ -1,5 +1,9 @@
 #!/bin/python
 
+import os
+import re
+import subprocess
+
 def local_repo():
     repo="""[local-epel]
 name=NTI300 EPEL
@@ -22,7 +26,6 @@ enabled=1"""
       f.write(dissablerepo)
     f.close()
 
-local_repo()
 import os
 import re
 import subprocess
@@ -70,6 +73,7 @@ def django_start():
 
     os.system('sudo -u chrisng sh -c "source /opt/django/django-env/bin/activate && python manage.py runserver 0.0.0.0:8000&"')
 
+local_repo()          
 setup_install()
 django_install()
 django_start()  
