@@ -14,7 +14,7 @@ zone = 'us-central1-a'
 name = 'test3'
 
 def list_instances(compute, project, zone):
-    result = compute.instances().list(project=project, zone=zone,).execute()
+    result = compute.instances().list(project=project, zone=zone).execute()
     return result['items']
 
 def create_instance(compute, project, zone, name):
