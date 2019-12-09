@@ -68,25 +68,7 @@ def django_start():
         f.close()
     os.system('sudo -u django sh -c "source /opt/django/django-env/bin/activate && python manage.py runserver 0.0.0.0:8000&"')
 
-    f = open('/etc/httpd/conf.d/django.conf',"w+")
-    i = 0
-    while i < len(django_config_file):
-        newLine = django_config_file[i] + '\n'
-        with open('/etc/httpd/conf.d/django.conf', "a") as f:
-                f.write(newLine)
-        with open('/etc/httpd/conf.d/django.conf') as f:
-                f.close()
-        i += 1
-    print('********** django.conf updated')
-
-    os.system('usermod -a -G django apache')
-    os.system('chmod 710 /opt/django')
-    os.system('chmod 664 /opt/django/project1/db.sqlite3')
-    os.system('chown :apache /opt/django/project1/db.sqlite3')
-    os.system('chown :apache /opt/django')
-    os.system('systemctl start httpd')
-    os.system('systemctl enable httpd')
-
+ 
 setup_install()
 django_install()
 django_start()
