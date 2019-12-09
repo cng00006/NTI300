@@ -15,8 +15,7 @@ name=NTI300 EPEL
 baseurl=http:/35.192.217.88/epel/
 gpgcheck=0
 enabled=1"""
-    os.system('for file in $( ls /etc/yum.repos.d/ ); do mv \
-    /etc/yum.repos.d/$file /etc/yum.repos.d/$file.bak; done')
+    os.system('for file in $( ls /etc/yum.repos.d/ ); do mv /etc/yum.repos.d/$file /etc/yum.repos.d/$file.bak; done')
     print(repo)
     with open("/etc/yum.repos.d/local-repo.repo","w+") as f:
       f.write(repo)
@@ -24,10 +23,8 @@ enabled=1"""
 local_repo()
 
 def setup_install():
-    print ('********** installing pip & virtualenv so we can give \
-    django its own ver of python')
-    os.system('yum -y install python-pip httpd mod_wsgi && pip \
-    install --upgrade pip')
+    print ('********** installing pip & virtualenv so we can give django its own ver of python')
+    os.system('yum -y install python-pip httpd mod_wsgi && pip install --upgrade pip')
     os.system('pip install virtualenv')
     os.chdir('/opt')
     os.mkdir('/opt/django')
@@ -36,8 +33,7 @@ def setup_install():
     os.system('chown -R django /opt/django')
 
 def django_install():
-    print ('********** activating virtualenv; installing django \
-    aftr pre-requrmnts met')
+    print ('********** activating virtualenv; installing django aftr pre-requrmnts met')
     os.system('source /opt/django/django-env/bin/activate ' + \
         '&& pip install django')
     os.chdir('/opt/django')
@@ -52,13 +48,9 @@ def django_start():
     os.system('source /opt/django/django-env/bin/activate ' + \
         '&& python manage.py migrate')
     os.system('source /opt/django/django-env/bin/activate ' + \
-        '&& echo "from django.contrib.auth import get_user_model; User = \
-        get_user_model(); User.objects.create_superuser\
-        (\'admin\', \'admin@newproject.com\', \'pw123456\')" | \
-        python manage.py shell')
+        '&& echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser(\'admin\', \'admin@newproject.com\', \'pw123456\')" | python manage.py shell')
 
-    outputwithnewline = subprocess.check_output('curl -s checkip.dyndns.org | \
-    sed -e \'s/.*Current IP Address: //\' -e \'s/<.*$//\'',shell=True)
+    outputwithnewline = subprocess.check_output('curl -s checkip.dyndns.org | sed -e \'s/.*Current IP Address: //\' -e \'s/<.*$//\'',shell=True)
 
     print('**********')
     print outputwithnewline
@@ -74,14 +66,14 @@ def django_start():
         f.write(newText)
     with open('project1/settings.py') as f:
         f.close()
-    os.system('sudo -u django sh -c "source /opt/django/django-env/bin/\
-    activate && python manage.py runserver 0.0.0.0:8000&"')
+    os.system('sudo -u django sh -c "source /opt/django/django-env/bin/activate && python manage.py runserver 0.0.0.0:8000&"')
 
 def setup_mod_wsgi():
     print('********** setup mod wsgi install')
 
     os.chdir('/opt/django/project1')
 
+    # update settings.py
     new_string = 'STATIC_ROOT = os.path.join(BASE_DIR, "static/")' + '\n'
     print (new_string)
 
@@ -90,7 +82,8 @@ def setup_mod_wsgi():
     with open('project1/settings.py') as f:
         f.close()
     print('********** settings.py updated')
-
+    # update the django.conf file for httpd
+    # define django.conf file content as an array
     django_config_file = [
         'Alias /static /opt/django/project1/static/',
         '<Directory /opt/django/project1/static/>',
@@ -101,8 +94,7 @@ def setup_mod_wsgi():
         '        Require all granted',
         '    </Files>',
         '</Directory>',
-        'WSGIDaemonProcess project1 python-path=/opt/django/project1:/opt/\
-        django/django-env/lib/python2.7/site-packages/',
+        'WSGIDaemonProcess project1 python-path=/opt/django/project1:/opt/django/django-env/lib/python2.7/site-packages/',
         'WSGIProcessGroup project1',
         'WSGIScriptAlias / /opt/django/project1/project1/wsgi.py'
         ]
@@ -125,7 +117,6 @@ def setup_mod_wsgi():
     os.system('chown :apache /opt/django')
     os.system('systemctl start httpd')
     os.system('systemctl enable httpd')
-
 
 setup_install()
 django_install()
