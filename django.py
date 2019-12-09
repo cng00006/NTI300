@@ -72,5 +72,4 @@ def django_start():
 setup_install()
 django_install()
 django_start()
-setup_mod_wsgi()
 print ('********** django.py complete')
